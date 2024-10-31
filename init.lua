@@ -2,6 +2,8 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.wrap = false
 
+vim.opt.spell = true
+
 require("config.lazy")
 
 require'lspconfig'.pylsp.setup{}
