@@ -3,7 +3,8 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
 	ensure_installed = {
-		"pylsp"
+		"pylsp",
+		"ltex"
 	}
     }
 }

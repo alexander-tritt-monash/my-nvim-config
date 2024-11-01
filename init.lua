@@ -8,8 +8,6 @@ vim.opt.spell = true
 
 require("config.lazy")
 
-require'lspconfig'.pylsp.setup{}
-
 require'nvim-treesitter.configs'.setup {
 	auto_install = true,
 	ensure_installed = {
@@ -21,7 +19,7 @@ require'nvim-treesitter.configs'.setup {
 		"markdown",
 		"markdown_inline",
 		"python",
-		"gitcommit"
+		"gitcommit",
 	},
 
 	highlight = {
@@ -109,6 +107,8 @@ cmp.setup.cmdline(':', {
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require('lspconfig')['pylsp'].setup {
-  capabilities = capabilities
-}
+for _, lsp_server in ipairs({'pylsp', 'ltex'}) do
+	require('lspconfig')[lsp_server].setup {
+	  capabilities = capabilities
+	}
+end
