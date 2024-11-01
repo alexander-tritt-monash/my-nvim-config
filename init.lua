@@ -47,6 +47,7 @@ for _, lsp_server in ipairs({'pylsp', 'ltex'}) do
 	}
 end
 
+
 -- --- Completion ------------------------------------------------------------
 local cmp = require'cmp'
 
@@ -113,3 +114,15 @@ cmp.setup.cmdline(':', {
   matching = { disallow_symbol_nonprefix_matching = false }
 })
 
+-- --- Code spell check ------------------------------------------------------
+local cspell = require('cspell')
+local null_ls = require("null-ls")
+null_ls.setup({
+	sources = {
+		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.completion.spell,
+		cspell.diagnostics,
+		cspell.code_actions
+		-- require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
+	},
+})
